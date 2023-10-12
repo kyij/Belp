@@ -1,0 +1,79 @@
+What can users do?
+
+
+API KEY = 9P6K3S10dKmUWrBIC3YZ-QC-l8kT3-is1iIYwQCgX0WOSgNklfL5Wg6sWSxaEnJ82OFZnZ3GPX1-qJnvw67e52pI99e9oRH0ktG75P7V3C4dApx3JkdCb8DXP6AdZXYx
+
+-users can create an account with login and password that ties into email(pk)
+-users can login with said account credentials
+-users have a profile tab on the homepage where they can click on
+    -user ratings are also displayed said profile tab for you and other users to see
+    -in said profile tab, users can click on edit profile button to 
+    display what information they want
+        -Client will give recommendation such as("Most users just display their gender,age, and a little something about themselves")
+        -There will be an "About Me:" section as well as "Hobbies:" section
+        -user can submit profile picture as well
+        -Once finished, users can click save and this data will be stored on your profile page for other users to see
+    -in profile tab, users have a preferences tab where they can prefilter the users they want
+    to see based on an age range
+    -in profile tab, users can click on a button called Begin Matching that then brings them to locations
+-Once in Locations, user can submit a zip code and mile radius for how far they are willing to travel
+    -user can filter the locations based on their interests, the current limited 
+    options will most likely be parks(basketball, swimming, hiking, running), gym, food(korean, chinese, etc) 
+    -user can also filter based on preexisting ratings pulled from Yelp API
+
+-Once user completed their filters, user will be given a list of locations
+within the given mile radius based on their filters
+
+-User can click on the info button under these locations to display
+some existing reviews and ratings pulled from Yelp API
+
+-Once your location is chosen via "Choose this location" button,
+user is then taken to a pool where they can start matching with other people
+who have chosen this location.
+-User can select multiple locations to queue into the existing pool,
+    -users given option where they can filter the existing users based on an age range
+    -from there, filters are then matched to determine 
+    -Grab users from pool and filter out based on said age range 
+        -and from the remaining users, check if said user age range is within your preferences
+        and vice versa(theirs)
+    -perhaps move age range to 2.0 features and just make the matching metric to be whether the other
+    user and you decide to match with each other
+
+
+-User will then get matched with random person from pool, user then given option to look
+at the other user's profile page and decide whether they want to match with said person
+    -If no, user will get resubmitted into pool to get someone random
+    -If yes, but other user said no, user gets resubmitted back into pool
+    -If yes and other user said yes, user gets redirected back to profile page where a message tab will open
+        -Inside message tab, user will see the other user and you can communicate text msg style
+        -User is also given option to no longer match with said user inside this tab
+            -If either user decides to do so, user will be removed from chat and user is free to start back from square one
+        -Inside message tab, user is given a button that indicates they have attended said location
+        -User is then allowed to leave a review and give the location a rating
+            -As this may be abused, a disclaimer will be placed to ask user to please not do so.
+
+
+
+
+
+
+
+dbdesigner Notes:
+
+
+
+for dbdesigner
+    -in matches table
+        user_id referring to user doing the matching whereas match_id refers to other party
+Once unmatched, message tab with matched person will be disabled with text channels stored in the database
+to be retrieved for any legal complications
+
+for text_channels table
+    -blocked_matched boolean default = false
+    -user1 id refers to you
+    -user2 id refers to other party
+    -think of text_channels and messages as same relationship locations/saved_locations
+
+
+
+add admin class to model.py later
