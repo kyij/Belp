@@ -2,27 +2,75 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width">
-    <title>
-        {% block title %}{% endblock %}
-    </title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width">
+  <title>
+    {% block title %}{% endblock %}
+  </title>
 
-    {% block head %}{% endblock %}
+  {% block head %}{% endblock %}
 </head>
+<style>
+  ul {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #5e3f38;
+  }
+
+  li {
+    float: right;
+  }
+
+  li a {
+    display: block;
+    color: rgb(206, 105, 105);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    background-color: #111;
+  }
+
+  li a:hover:not(.active) {
+    background-color: #111;
+  }
+
+  .active {
+    background-color: #04AA6D;
+  }
+
+    {% block style %}
+
+    {% endblock %}
+</style>
 
 <body>
   <!-- put nav bar here  -->
-    {% for msg in get_flashed_messages() %}
-      <p class="flash-msg">
-        {{ msg }}
-      </p>
-    {% endfor %}
+  <ul>
+    <li><a href="/locations">Locations </a></li>
+    <li><a href="/users"> Users </a></li>
+    <li><a href="/profile"> Profile</a></li>
+    <li><a href="/login"> Log In</a></li> 
+    <li><a href="/"> Home </a></li>
+  </ul>
+  {% for msg in get_flashed_messages() %}
+  <p class="flash-msg">
+    {{ msg }}
+  </p>
+  {% endfor %}
 
-    {% block body %}{% endblock %}
+  {% block body %}{% endblock %}
 
-    {% block after_body %}{% endblock %}
+  {% block after_body %}{% endblock %}
+  <script src="/static/js/capstone.js"></script>
 </body>
 
 </html>

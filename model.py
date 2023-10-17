@@ -17,7 +17,7 @@ class User(db.Model):
     profile_pic_url = db.Column(db.String, nullable=True)
     email = db.Column(db.String, unique=True)
     password = db.Column(db.String)
-    birthday = db.Column(db.DateTime, nullable=True)
+    birthday = db.Column(db.Date, nullable=True)
     
 
     saved_locs = db.relationship("SavedLocations", back_populates="user")

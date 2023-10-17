@@ -25,20 +25,21 @@ model.db.session.add(user3)
 model.db.session.commit()
 
 
-#Path directory
-folder_dir=""
+
 #Create 30 users with a random profile pic
-for n in range(22):
+for n in range(1,23):
     email = f"user{n}@test.com" 
     password = "test"
     display_name = f"user{n}"
-    birthday = f'1998-10-{n} 00:00:00'
+    birthday =  f'10/{n}/1998'
     profile_pic_url = f'/static/images/{n}.jpg'
     about_me = "Hi, this is a test msg"
     hobbies = "Hi, this is a test msg"
 
+    user= crud.create_user(email, password, display_name, birthday, profile_pic_url, about_me, hobbies)
+    model.db.session.add(user)
 
-
+model.db.session.commit()
 
 location1 = model.Location(name="SF", state="CA", city="SF", address="s")
 location2 = model.Location(name="SJ", state="CA", city="SJ", address="as")

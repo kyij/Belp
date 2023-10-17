@@ -1,8 +1,6 @@
 What can users do?
 
 
-API KEY = 9P6K3S10dKmUWrBIC3YZ-QC-l8kT3-is1iIYwQCgX0WOSgNklfL5Wg6sWSxaEnJ82OFZnZ3GPX1-qJnvw67e52pI99e9oRH0ktG75P7V3C4dApx3JkdCb8DXP6AdZXYx
-
 -users can create an account with login and password that ties into email(pk)
 -users can login with said account credentials
 -users have a profile tab on the homepage where they can click on

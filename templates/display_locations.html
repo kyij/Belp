@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Display Locations{% endblock %}
+
+{% block body %}
+<h1>Locations</h1>
+{% for location in locations["businesses"] %}
+<ol>
+    <img src= {{location.image_url}}>
+    <br>
+    Name : {{location.name}}
+    <br>
+    Address: {{location.location["display_address"]}}
+    <br>
+    Url: {{location.url}}
+    <br>
+    Phone Number: {{location.display_phone}}
+    <br>
+    Rating: {{location.rating}}
+    <br>
+    Review Count: {{location.review_count}}
+    <br>
+    <button class="favlocation" id="{{location.id}}"> Click here to save!</button> 
+</ol>
+{% endfor %}
+
+{% endblock %}

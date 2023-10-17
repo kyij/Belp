@@ -4,7 +4,9 @@ from flask import Flask, render_template, request, flash, session, redirect, url
 from model import connect_to_db, db
 import crud
 import cloudinary.uploader
+import math
 import os
+import requests
 
 from jinja2 import StrictUndefined
 
@@ -15,6 +17,7 @@ app.jinja_env.undefined = StrictUndefined
 CLOUDINARY_KEY = os.environ['CLOUDINARY_KEY']
 CLOUDINARY_SECRET = os.environ['CLOUDINARY_SECRET']
 CLOUD_NAME = "dtan0lsvk"
+YELP_APIKEY =os.environ['YELP_APIKEY']
 
 @app.route("/")
 def homepage():
@@ -27,6 +30,7 @@ def create_account_button():
     """Press this to create an account"""
     
     return render_template("create_account.html")
+
 
 @app.route("/users")
 def all_users():
@@ -66,6 +70,12 @@ def register_user():
 
     return redirect("/")    
 
+@app.route("/login")
+def login_page():
+    """Displays login page"""
+
+    return render_template("log_in.html")
+
 @app.route("/login", methods=["POST"])
 def login_user():
     """Log in user."""
@@ -97,11 +107,54 @@ def profile():
 
     return render_template("profile.html",user=user)
 
+@app.route("/locations")
+def locationsform():
+    """Display locations page."""
 
-# @app.route("/locations")
-# def location():
+    return render_template("locations.html")
 
+@app.route("/displaylocations")
+def get_search_results():
+    """Search for locations on Yelp"""
 
+    url = "https://api.yelp.com/v3/businesses/search"
+
+    headers = {
+    "accept": "application/json",
+    "Authorization": f"Bearer {YELP_APIKEY}"
+    }
+    keywords = request.args.get('keywords')
+    location = request.args.get('location')
+    radius = request.args.get('radius')
+    unit = request.args.get('unit')
+
+    #Convert default meters to selected unit.
+    if radius != "" or radius is not None:
+        radius=float(radius)
+        if unit == "Miles":
+            radius = radius * 1609.34
+        elif unit == "Kilometers":
+            radius = radius * 1000
+        radius = math.ceil(radius)
+
+    payload ={
+    'term': keywords,
+    'location': location,
+    'radius': radius,
+    'limit':50,
+    }
+
+    response = requests.get(url, headers=headers, params=payload)
+    response = response.json()
+    
+    return render_template("display_locations.html", locations=response)
+
+@app.route('/savelocation', methods=["POST"])
+def save_locationid():
+
+    locationid = request.json.get("locationid")
+
+    return locationid
 
 
  

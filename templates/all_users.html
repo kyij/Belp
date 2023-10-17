@@ -4,13 +4,13 @@
 {% block body %}
   <h1>All Users</h1>
 
-  <ul>
+  <dl>
     {% for user in users %}
-      <li>
-        <a href="/users/{{ user.user_id }}">
-          {{ user.email }}
-        </a>
-      </li>
+      
+        <dt>
+          Display Name: <dd><a href="/users/{{ user.user_id }}"></a>{{ user.display_name }}</dd>
+        </a></dt>
+      
     {% endfor %}
-  </ul>
+      </dl>
 {% endblock %}
