@@ -19,7 +19,17 @@
     <br>
     Review Count: {{location.review_count}}
     <br>
-    <button class="favlocation" id="{{location.id}}"> Click here to save!</button> 
+    <button class="favlocation" id="{{location.id}}"
+    data-name = "{{location.name}}" 
+    data-address = "{{location.location['display_address']}}"
+    data-city = "{{location.location['city']}}"
+    data-zip_code = "{{location.location['zip_code']}}"
+    data-country = "{{location.location['country']}}"
+    data-state = "{{location.location['state']}}"
+    data-url = "{{location.url}}"
+    data-display_phone = "{{location.display_phone}}"
+    data-rating = "{{location.rating}}"
+    data-review = "{{location.review_count}}"> Click here to save!</button> 
 </ol>
 {% endfor %}
 

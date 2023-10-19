@@ -44,21 +44,36 @@ def get_locations_by_city(city):
 
     return Location.query.filter(Location.city == city).all()
 
-def create_location(name, state, city, address):
+def create_location(location_id, name, address, city, state, country, zip_code, url, phone_num, rating, review_count):
     """Create new location."""
 
-    location = Location(name=name,
-                        state=state,
+    location = Location(location_id=location_id,
+                        name=name,
+                        address=address,
                         city=city,
-                        address=address)
+                        state=state,
+                        country=country,
+                        zip_code=zip_code,
+                        url=url,
+                        phone_num=phone_num,
+                        rating=rating,
+                        review_count=review_count)
     
     return location
 
-
-def get_savedlocations(user_id):
-    """Return all savedlocations by user_id"""
+def create_saved_locations(user_id, location_id):
+    """Create saved location."""
+    
+    saved_loc = SavedLocations(user_id=user_id,
+                               location_id=location_id)
+    
+    return saved_loc
+    
+def get_saved_locations(user_id):
+    """Return all saved locations by user_id"""
     
     return SavedLocations.query.filter(SavedLocations.user_id == user_id).all()
+
 
 def get_textChannel():
     """Return text channel"""

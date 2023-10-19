@@ -31,11 +31,18 @@ class Location(db.Model):
 
     __tablename__ = "locations"
 
-    location_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    name = db.Column(db.String)
-    state = db.Column(db.String)
-    city = db.Column(db.String)
-    address = db.Column(db.String)
+    location_id = db.Column(db.String, primary_key=True)
+    name = db.Column(db.String, nullable = True)
+    state = db.Column(db.String, nullable = True)
+    city = db.Column(db.String, nullable = True)
+    address = db.Column(db.String, nullable = True)
+    zip_code = db.Column(db.Integer, nullable = True)
+    country = db.Column(db.String, nullable = True)
+    url = db.Column(db.String, nullable = True)
+    phone_num = db.Column(db.String, nullable = True)
+    rating = db.Column(db.String, nullable = True)
+    review_count = db.Column(db.Integer, nullable = True)
+
 
     saved_loc = db.relationship("SavedLocations", back_populates="location")
     ratings = db.relationship("Ratings", back_populates="location")
@@ -50,7 +57,7 @@ class SavedLocations(db.Model):
 
     saved_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
-    location_id = db.Column(db.Integer, db.ForeignKey("locations.location_id"))
+    location_id = db.Column(db.String, db.ForeignKey("locations.location_id"))
 
     user = db.relationship("User", back_populates="saved_locs")
     location = db.relationship("Location", back_populates="saved_loc")
@@ -123,7 +130,7 @@ class Ratings(db.Model):
     rating_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     score = db.Column(db.Integer)
-    location_id = db.Column(db.Integer, db.ForeignKey("locations.location_id"))
+    location_id = db.Column(db.String, db.ForeignKey("locations.location_id"))
 
     user = db.relationship("User", back_populates="ratings")
     location = db.relationship("Location", back_populates="ratings")

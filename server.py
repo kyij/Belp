@@ -152,9 +152,55 @@ def get_search_results():
 @app.route('/savelocation', methods=["POST"])
 def save_locationid():
 
-    locationid = request.json.get("locationid")
+    location_id = request.json.get("locationid")
+    name = request.json.get('name')
+    address = request.json.get('address')
+    city = request.json.get('city')
+    zip_code = request.json.get('zip_code')
+    country = request.json.get('country')
+    state = request.json.get('state')
+    url = request.json.get('url')
+    phone_num = request.json.get('display_phone')
+    rating = request.json.get('rating')
+    review_count = request.json.get('review_count')
 
-    return locationid
+    location = crud.get_location_by_id(location_id)
+    if not location:
+        location = crud.create_location(location_id=location_id,
+                                        name=name,
+                                        address=address,
+                                        city=city,
+                                        state=state,
+                                        country=country,
+                                        zip_code=zip_code,
+                                        url=url,
+                                        phone_num=phone_num,
+                                        rating=rating,
+                                        review_count=review_count)
+        db.session.add(location)
+        db.session.commit()
+    
+    logged_email = session.get("user_email")
+    user = crud.get_user_by_email(logged_email)
+    saved_loc = crud.create_saved_locations(user_id=user.user_id,
+                                          location_id=location_id)
+    db.session.add(saved_loc)
+    db.session.commit()
+
+
+    print(location_id)
+    print(address)
+    print(name)
+    print(city)
+    print(zip_code)
+    print(country)
+    print(state)
+    print(url)
+    print(phone_num)
+    print(rating)
+    print(review_count)
+
+    return location_id
 
 
  
