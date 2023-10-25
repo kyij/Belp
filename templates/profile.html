@@ -4,16 +4,35 @@
 
 {% block body %}
 <h1>{{user.display_name}}'s Profile Page</h1>
+
 <img src="{{user.profile_pic_url}}">
 <ul>
 
- <label for="about_me">About Me:</label>
- <br>
- <textarea id="about_me" name="about_me" rows="10" cols="50">{{user.about_me}} {{user.birthday}}</textarea>
- <br>
- <label for="hobbies">Hobbies:</label>
- <br>
- <textarea id="hobbies" name="hobbies" rows="10" cols="50" >{{user.hobbies}}</textarea>
- 
-</ul
+    <label for="about_me">About Me:</label>
+    <br>
+    <textarea id="about_me" name="about_me" rows="10" cols="50">{{user.about_me}} {{user.birthday}}</textarea>
+    <br>
+    <label for="hobbies">Hobbies:</label>
+    <br>
+    <textarea id="hobbies" name="hobbies" rows="10" cols="50">{{user.hobbies}}</textarea>
+    <br>
+    {% for saved_loc in user.saved_locs %}
+    <br>
+    {{saved_loc.location.name}}
+    <br>
+    {{saved_loc.location.address}}
+    <br>
+    {{saved_loc.location.phone_num}}
+    <br>
+    {{saved_loc.location.rating}}
+    <br>
+    {{saved_loc.location.review_count}}
+    <br>
+    <a href ="/locations/{{ saved_loc.location.location_id }}"> Reviews </a>
+    {% endfor %}
+
+
+
+</ul>
+
 {% endblock %}

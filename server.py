@@ -95,7 +95,7 @@ def login_user():
 
 @app.route("/profile")
 def profile():
-    """Display Profile Data"""
+    """Generate Profile.html and check if there is a session user."""
 
     logged_in_email = session.get("user_email")
     if logged_in_email is None:
@@ -104,11 +104,10 @@ def profile():
     
     user = crud.get_user_by_email(logged_in_email)
 
-
     return render_template("profile.html",user=user)
 
 @app.route("/locations")
-def locationsform():
+def locations_form():
     """Display locations page."""
 
     return render_template("locations.html")
@@ -149,8 +148,45 @@ def get_search_results():
     
     return render_template("display_locations.html", locations=response)
 
+@app.route("/locations/<location_id>")
+def location_details(location_id):
+    """Renders location_details.html"""
+
+    logged_email = session.get("user_email")
+    
+    if logged_email is None:
+        flash("You have to be logged in to see this page.")
+        return redirect("/")
+
+    location = crud.get_location_by_id(location_id)
+    posts = crud.get_post_location_id(location_id=location.location_id)
+
+    return render_template("locations_details.html",location=location, posts=posts)
+
+@app.route('/save_post', methods=['POST'])
+def get_post_body():
+    """Grab json data via fetch in JS for the post body"""
+
+    location_id = request.form.get('location_id')
+    post_body = request.form.get('post_body')
+
+    logged_email = session.get("user_email")
+    user = crud.get_user_by_email(logged_email)
+
+    make_post = crud.create_post(user_id=user.user_id, 
+                                 location_id=location_id, 
+                                 post_body=post_body)
+    
+    db.session.add(make_post)
+    db.session.commit()
+    print(location_id)
+    print(post_body)
+
+    return redirect(f'/locations/{location_id}')
+
 @app.route('/savelocation', methods=["POST"])
-def save_locationid():
+def save_location_id():
+    """Grab json data via fetch in JS for yelp api data on location."""
 
     location_id = request.json.get("locationid")
     name = request.json.get('name')
@@ -161,6 +197,7 @@ def save_locationid():
     state = request.json.get('state')
     url = request.json.get('url')
     phone_num = request.json.get('display_phone')
+    img_url = request.json.get('img_url')
     rating = request.json.get('rating')
     review_count = request.json.get('review_count')
 
@@ -175,6 +212,7 @@ def save_locationid():
                                         zip_code=zip_code,
                                         url=url,
                                         phone_num=phone_num,
+                                        img_url=img_url,
                                         rating=rating,
                                         review_count=review_count)
         db.session.add(location)
@@ -182,28 +220,15 @@ def save_locationid():
     
     logged_email = session.get("user_email")
     user = crud.get_user_by_email(logged_email)
-    saved_loc = crud.create_saved_locations(user_id=user.user_id,
+    saved_loc = crud.get_saved_locations(user_id=user.user_id, location_id=location_id)
+    if not saved_loc:
+        saved_loc = crud.create_saved_locations(user_id=user.user_id,
                                           location_id=location_id)
-    db.session.add(saved_loc)
-    db.session.commit()
-
-
-    print(location_id)
-    print(address)
-    print(name)
-    print(city)
-    print(zip_code)
-    print(country)
-    print(state)
-    print(url)
-    print(phone_num)
-    print(rating)
-    print(review_count)
+        db.session.add(saved_loc)
+        db.session.commit()
 
     return location_id
 
-
- 
 
 if __name__ == "__main__":
     connect_to_db(app)

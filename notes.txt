@@ -2,3 +2,9 @@ Crud.py:
 
 matches=Matches.query.filter_by(user_id=1) will basically be the crud function for get_matches_by_id
 
+
+Detail's Page Notes
+
+-form action with textarea and submit button, hidden inputs with location_id and user_id
+    session check on logged_email
+    -

@@ -52,9 +52,20 @@ at the other user's profile page and decide whether they want to match with said
 
 
 
+Scrap matching feature and go with message 
 
+create posts table with
+    posts_id
+    user_id
+    location_id
+    post_body 
 
-
+    display posts via for loop in chronological order
+-create locations_details.html
+-generate app route that creates locations_details.html
+-inside html, create form action with route noted in server.py 
+    -users can make posts and location details will be showcased on the page
+-show saved locations in profile tab with details 
 
 dbdesigner Notes:
 

@@ -22,6 +22,7 @@ class User(db.Model):
 
     saved_locs = db.relationship("SavedLocations", back_populates="user")
     ratings = db.relationship("Ratings", back_populates="user")
+    posts = db.relationship("Posts", back_populates="user")
 
     def __repr__(self):
         return f"<User name={self.display_name} email= {self.email}>"
@@ -40,12 +41,14 @@ class Location(db.Model):
     country = db.Column(db.String, nullable = True)
     url = db.Column(db.String, nullable = True)
     phone_num = db.Column(db.String, nullable = True)
+    img_url = db.Column(db.String, nullable= True)
     rating = db.Column(db.String, nullable = True)
     review_count = db.Column(db.Integer, nullable = True)
 
 
     saved_loc = db.relationship("SavedLocations", back_populates="location")
     ratings = db.relationship("Ratings", back_populates="location")
+    posts = db.relationship("Posts", back_populates="location")
     
     def __repr__(self):
         return f"<Location name={self.name} address = {self.address} state={self.state} city ={self.city}>"
@@ -65,6 +68,22 @@ class SavedLocations(db.Model):
     def __repr__(self):
         return f"<Saved Locations saved_id={self.saved_id} location_id={self.location_id}>"
 
+class Posts(db.Model):
+    """Ratings for locations"""
+
+    __tablename__ = "posts"
+
+    post_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+    location_id = db.Column(db.String, db.ForeignKey("locations.location_id"))
+    post_body = db.Column(db.Text, nullable=True)
+
+    user = db.relationship("User", back_populates="posts")
+    location = db.relationship("Location", back_populates="posts")
+
+    def __repr__(self):
+        return f"<Posts user_id={self.user_id} location_id ={self.location_id}>"
+    
 class Matches(db.Model):
     """Matches, used to store id of user that is making the match and the user that got matched"""
 
@@ -137,7 +156,8 @@ class Ratings(db.Model):
 
     def __repr__(self):
         return f"<Ratings rating_id={self.rating_id} user_id ={self.user_id} location_id={self.location_id} score ={self.score}>"
-    
+
+
 def connect_to_db(flask_app, db_uri="postgresql:///capstone", echo=True):
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
     flask_app.config["SQLALCHEMY_ECHO"] = echo
