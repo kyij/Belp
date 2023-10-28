@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ location.name }}'s Page{% endblock %}
+{% block head %}
+
+
+
+{% endblock %}
+{% block body %}
+<h1>{{location.name}}'s Details Page</h1>
+<div class="location_details" id="location_details">
+    <ol>
+        <img src={{location.img_url}}>
+        <br>
+        Name : {{location.name}}
+        {{location.location_id}}
+        <br>
+        Address: {{location.address}}
+        <br>
+        Url: {{location.url}}
+        <br>
+        Phone Number: {{location.phone_num}}
+        <br>
+        Rating: {{location.rating}}
+        <br>
+        Review Count: {{location.review_count}}
+        <br>
+        <div class="hours" id="hours">
+            <h4>Hours</h4>
+        {% if hours['Sunday']['is_closed_today'] == True %}
+            <p>Sunday: Closed </p>
+        {% else %}
+            <p>Sunday : {{ hours['Sunday']['when_open'] }}</p>
+        {% endif %}
+        {% if hours['Monday']['is_closed_today'] == True %}
+            <p>Monday: Closed </p>
+        {% else %}
+            <p>Monday : {{ hours['Monday']['when_open'] }}</p>
+        {% endif %}
+        {% if hours['Tuesday']['is_closed_today'] == True %}
+            <p>Tuesday: Closed </p>
+        {% else %}
+            <p>Tuesday : {{ hours['Tuesday']['when_open'] }}</p>
+        {% endif %}
+        {% if hours['Wednesday']['is_closed_today'] == True %}
+            <p>Wednesday: Closed </p>
+        {% else %}
+            <p>Wednesday : {{ hours['Wednesday']['when_open'] }}</p>
+        {% endif %}
+        {% if hours['Thursday']['is_closed_today'] == True %}
+            <p>Thursday: Closed </p>
+        {% else %}
+            <p>Thursday : {{ hours['Thursday']['when_open'] }}</p>
+        {% endif %}
+        {% if hours['Friday']['is_closed_today'] == True %}
+            <p>Friday: Closed </p>
+        {% else %}
+            <p>Friday : {{ hours['Friday']['when_open'] }}</p>
+        {% endif %}
+        {% if hours['Saturday']['is_closed_today'] == True %}
+            <p>Saturday: Closed </p>
+        {% else %}
+            <p>Saturday : {{ hours['Saturday']['when_open'] }}</p>
+        {% endif %}
+        <br>
+       
+      
+       
+        </div>
+
+    </ol>
+</div>
+<div class="reviews" id="reviews" name="reviews">
+    <h1> <b>Reviews</b></h1>
+    <ol>
+        {% for review in reviews["reviews"] %}
+        <li>
+            Name: {{review.user["name"]}}
+            <br>
+            <img src = "{{review.user['image_url']}}">
+            Rating: {{review.rating}}
+            <br>
+            Posted: {{review.time_created}}
+            <br>
+            <br>
+            {{review.text}}
+            <br>
+            <br>
+        </li>
+        {% endfor %}
+    </ol>
+</div>
+
+<div id="all_posts">
+    {% for post in posts %}
+    <img src={{post.user.profile_pic_url}}> <a href="/users/{{post.user.user_id}}">{{post.user.display_name}}</a>
+    posted:
+    <br>
+    {{post.post_body}}
+    <br>
+    {% endfor %}
+</div>
+<form action="/save_post" , method="POST">
+    <input type="hidden" name="location_id" value="{{location.location_id}}">
+    <label for="post_body"> Comment Below:</label>
+    <br>
+    <textarea id="posts_body" name="post_body" style="height:300px; width:300px"></textarea>
+    <br>
+    <input type="submit">
+
+</form>
+{% endblock %}

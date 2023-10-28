@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %} Edit your profile! {% endblock %}
+
+{% block body %}
+<h2>Edit {{user.display_name}}'s Profile Page!</h2>
+<form action="/edit_profile" method="POST" enctype="multipart/form-data">
+   
+  <label for="password"> Password:</label>
+  <br>
+  <input type="password" name="password">
+  <br>
+  <label for="birthday"> Birthday:</label>
+  <br>
+  <input type="date" name="birthday">
+  <br>
+  <label for="display_name"> Display Name:</label>
+  <br>
+  <input type="text" name="display_name">
+  <br>
+  <label for="profile_pic_url" >Profile Picture:</label>
+  <br>
+  <input type="file" name="profile_pic_url">
+  <br>
+  <label for="about_me"> About Me:</label>
+  <br>
+  <textarea id="about_me" name="about_me" style="height:300px; width:300px"></textarea>
+  <br>
+  <label for="hobbies"> Hobbies:</label>
+  <br>
+  <textarea id="hobbies" name="hobbies" style="height:300px; width:300px"></textarea>>
+
+  </p>
+
+  <p>
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+  </p>
+</form>
+{% endblock %}

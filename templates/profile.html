@@ -4,31 +4,45 @@
 
 {% block body %}
 <h1>{{user.display_name}}'s Profile Page</h1>
-
+<a href ="/edit_profile_page"> Edit Profile!</a>
+<br>
 <img src="{{user.profile_pic_url}}">
 <ul>
 
     <label for="about_me">About Me:</label>
     <br>
-    <textarea id="about_me" name="about_me" rows="10" cols="50">{{user.about_me}} {{user.birthday}}</textarea>
+    <div class="about_me" id="about_me" name="about_me">
+    <br>
+    {{user.about_me}}
+    <br>
+    </div>
     <br>
     <label for="hobbies">Hobbies:</label>
     <br>
-    <textarea id="hobbies" name="hobbies" rows="10" cols="50">{{user.hobbies}}</textarea>
+    <div class="hobbies" id="hobbies" name="hobbies">
     <br>
+    {{user.hobbies}}
+    <br>
+    </div>
+    <br>
+    <p><b>These are your current Saved Locations.</b></p>
     {% for saved_loc in user.saved_locs %}
     <br>
-    {{saved_loc.location.name}}
+    Name: {{saved_loc.location.name}}
     <br>
-    {{saved_loc.location.address}}
+    Address: {{saved_loc.location.address}}
     <br>
-    {{saved_loc.location.phone_num}}
+    Phone Number: {{saved_loc.location.phone_num}}
     <br>
-    {{saved_loc.location.rating}}
+    Rating: {{saved_loc.location.rating}}
     <br>
-    {{saved_loc.location.review_count}}
+    Review Count:{{saved_loc.location.review_count}}
     <br>
-    <a href ="/locations/{{ saved_loc.location.location_id }}"> Reviews </a>
+    <br>
+    -><a href ="/locations/{{ saved_loc.location.location_id }}"> Reviews and Comments</a>
+    <br>
+    <a href="/locations/{{saved_loc.location.location_id}}/delete_saved_location"> Would you like to delete this location? </a>
+    <br>
     {% endfor %}
 
 

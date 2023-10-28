@@ -73,12 +73,13 @@ def create_saved_locations(user_id, location_id):
 def get_saved_locations(user_id, location_id):
     """Return all saved locations by user_id and location_id"""
     
-    return SavedLocations.query.filter(SavedLocations.user_id == user_id, SavedLocations.location_id == location_id).all()
+    return SavedLocations.query.filter(SavedLocations.user_id == user_id, SavedLocations.location_id == location_id).first()
 
 def get_saved_locations_by_user(user_id):
     """Return all saved locations by user_id"""
 
     return SavedLocations.query.filter(SavedLocations.user_id == user_id).all()
+
 
 def create_post(user_id, location_id, post_body):
     """Create new post."""

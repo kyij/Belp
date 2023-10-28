@@ -23,11 +23,11 @@
     background-color: #5e3f38;
   }
 
-  li {
+  li.nav_bar_li {
     float: right;
   }
 
-  li a {
+  li.nav_bar_li a {
     display: block;
     color: rgb(206, 105, 105);
     text-align: center;
@@ -35,11 +35,11 @@
     text-decoration: none;
   }
 
-  li a:hover {
+  li.nav_bar_li a:hover {
     background-color: #111;
   }
 
-  li a:hover:not(.active) {
+  li.nav_bar_li a:hover:not(.active) {
     background-color: #111;
   }
 
@@ -55,11 +55,15 @@
 <body>
   <!-- put nav bar here  -->
   <ul>
-    <li><a href="/locations">Locations </a></li>
-    <li><a href="/users"> Users </a></li>
-    <li><a href="/profile"> Profile</a></li>
-    <li><a href="/login"> Log In</a></li> 
-    <li><a href="/"> Home </a></li>
+    <li class ="nav_bar_li"><a href="/locations">Locations </a></li>
+    <li class ="nav_bar_li"><a href="/profile"> Profile</a></li>
+    {% if session.get('user_email') == None %}
+      <li class ="nav_bar_li"><a href="/login"> Log In</a></li>
+    {% else %}
+    
+    <li class ="nav_bar_li"><a href="/logout">Log Out</a></li>
+    {% endif %} 
+    <li class ="nav_bar_li"><a href="/"> Home </a></li>
   </ul>
   {% for msg in get_flashed_messages() %}
   <p class="flash-msg">

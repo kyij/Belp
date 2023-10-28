@@ -5,6 +5,29 @@ matches=Matches.query.filter_by(user_id=1) will basically be the crud function f
 
 Detail's Page Notes
 
--form action with textarea and submit button, hidden inputs with location_id and user_id
-    session check on logged_email
+-form action with textarea and submit button, hidden inputs with location_id and post_body
+    
+    -fetch location_id and post_body with js files
+    -pull user_id from session
+    -make post and commit to database
+    -send user.display_name and post_body back to js
+    -use insertadjacenthtml in js and select div by id, beforeend
+    -
+
+
+
+    part 1
+
+
+    add log out no conditionals
+
+    part 2
+
+    work on implementing conditions for login and logout based on session
+
+    user profile:
+
+    create html for other user profiles with displayname, ratings, 
+        -
+    server route to that html and pass other user id
     -
