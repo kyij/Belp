@@ -4,49 +4,67 @@
 
 {% block body %}
 <h1>{{user.display_name}}'s Profile Page</h1>
-<a href ="/edit_profile_page"> Edit Profile!</a>
-<br>
-<img src="{{user.profile_pic_url}}">
-<ul>
+<div class="profile_page">
+    <div class="edit_button">
+    <a target='_blank' href="/edit_profile_page"> Edit Profile</a>
+    </div>
+    <br>
 
-    <label for="about_me">About Me:</label>
-    <br>
-    <div class="about_me" id="about_me" name="about_me">
-    <br>
-    {{user.about_me}}
-    <br>
+    <img src="{{user.profile_pic_url}}" class="profile_pic">
+
+    <ul>
+
+        <label for="about_me">About Me:</label>
+        <br>
+        <div class="about_me" id="about_me" name="about_me">
+            <br>
+            {{user.about_me}}
+            <br>
+        </div>
+        <br>
+        <label for="hobbies">Hobbies:</label>
+        <br>
+        <div class="hobbies" id="hobbies" name="hobbies">
+            <br>
+            {{user.hobbies}}
+            <br>
+        </div>
+        <br>
+        <p><b>These are your current Saved Locations.</b></p>
+
+        
+        {% for saved_loc in user.saved_locs %}
+        <br>
+        <div class="saved_locations">
+            <img src="{{saved_loc.location.img_url}}" class="saved_loc_img">
+            <br>
+        Name: {{saved_loc.location.name}}
+        <br>
+        Address: {{saved_loc.location.address}}
+        <br>
+        Phone Number: {{saved_loc.location.phone_num}}
+        <br>
+        Rating: {{saved_loc.location.rating}}
+        <br>
+        Review Count:{{saved_loc.location.review_count}}
+        <br>
+        <br>
+        <div class="reviews_comments">
+        <a href="/locations/{{ saved_loc.location.location_id }}"> Reviews and Comments</a>
+        </div>
+        <br>
+        <br>
+        <div class="delete_location">
+        <a href="/locations/{{saved_loc.location.location_id}}/delete_saved_location"> Would you like to delete this
+            location? </a>
+        </div>
+        <br>
     </div>
-    <br>
-    <label for="hobbies">Hobbies:</label>
-    <br>
-    <div class="hobbies" id="hobbies" name="hobbies">
-    <br>
-    {{user.hobbies}}
-    <br>
-    </div>
-    <br>
-    <p><b>These are your current Saved Locations.</b></p>
-    {% for saved_loc in user.saved_locs %}
-    <br>
-    Name: {{saved_loc.location.name}}
-    <br>
-    Address: {{saved_loc.location.address}}
-    <br>
-    Phone Number: {{saved_loc.location.phone_num}}
-    <br>
-    Rating: {{saved_loc.location.rating}}
-    <br>
-    Review Count:{{saved_loc.location.review_count}}
-    <br>
-    <br>
-    -><a href ="/locations/{{ saved_loc.location.location_id }}"> Reviews and Comments</a>
-    <br>
-    <a href="/locations/{{saved_loc.location.location_id}}/delete_saved_location"> Would you like to delete this location? </a>
-    <br>
-    {% endfor %}
+{% endfor %}
+
 
 
 
 </ul>
-
+</div>
 {% endblock %}

@@ -1,0 +1,279 @@
+
+
+body {
+    background-image: url("/static/images/ggbridge1.jpg");
+}
+
+div.location_details {
+    background-color: rgb(200, 218, 242);
+}
+
+div.profile_page {
+    background-color: rgb(200, 218, 242);
+}
+
+div.edit_button a{
+    background-color: aquamarine;
+    font: bold 20px Arial;
+    max-width: 15%;
+    height:auto;
+    text-decoration: none;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+    position:absolute;
+    right: 80px;
+}
+
+div.edit_prof {
+    background-color: rgb(200, 218, 242);
+}
+
+div.about_me {
+    background-color: aquamarine;
+    border-radius: 3px;
+    border: 3px solid black;
+    width: 30em;
+    height: 10em;
+    margin: 1em;
+    padding: 1em;
+}
+
+div.hobbies {
+    background-color: aquamarine;
+    border-radius: 3px;
+    border: 3px solid black;
+    width: 30em;
+    height: 10em;
+    margin: 1em;
+    padding: 1em;
+}
+
+div.profile_info {
+    background-color: rgb(200, 218, 242);;
+}
+
+div.users_about_me {
+    background-color: aquamarine;
+    border-radius: 3px;
+    border: 3px solid black;
+    width: 30em;
+    height: 10em;
+    margin: 1em;
+    padding: 1em;
+}
+
+div.users_hobbies {
+    background-color: aquamarine;
+    border-radius: 3px;
+    border: 3px solid black;
+    width: 30em;
+    height: 10em;
+    margin: 1em;
+    padding: 1em;
+}
+
+div.saved_locations {
+    background-color: rgb(109, 220, 183);
+    border-radius: 3px;
+    border: 3px solid black;
+    width: auto;
+    height: auto;
+    margin: 1em;
+    padding: 1em;
+}
+
+div.locations {
+    background-color: rgb(200, 218, 242);;
+}
+
+div.location_cards {
+    background-color: rgb(200, 218, 242);;
+    border-radius: 3px;
+    border: 3px solid black;
+    width: auto;
+    height: auto;
+    margin: 2em;
+    padding: 1em;
+}
+
+div.welcome_msg {
+    background-color: beige;
+    background-size: 50em;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}
+
+div.create_account a{
+    position:absolute;
+    font: bold 11px Arial;
+    max-width: 25%;
+    height:auto;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+}
+div.create_account_page {
+    background-color: rgb(200, 218, 242);
+}
+div.log_in {
+    background-color: rgb(200, 218, 242);
+    max-width: 50%;
+}
+div.reviews {
+    background-color: rgb(200, 218, 242);
+}
+
+div.all_posts {
+    background-color: rgb(200, 218, 242);
+    border-radius: 3px;
+    border: 3px solid black;
+    width: auto;
+    height: auto;
+    margin: 1em;
+    padding: 1em;
+}
+
+div.reviews_comments a {
+    font: bold 11px Arial;
+    max-width: 15%;
+    height:auto;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+    position:absolute;
+    left: 80px;
+}
+
+div.delete_location a{
+    position:absolute;
+    right: 30px;
+    font: bold 11px Arial;
+    max-width: 20s%;
+    height:auto;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+}
+
+div.hours {
+    background-color: rgb(200, 218, 242);
+    border: 2px solid rgb(109, 220, 183);
+    max-width: 40%;
+    height: auto;
+    margin: 1em;
+    padding: 1em;
+}
+
+p.flash-msg{
+    color:rgb(200, 218, 242) ;
+    background-color: #952020 ;
+    border: 3px solid black;
+}
+
+img.location_img_url{
+    border: 2px solid black;
+    height: auto;
+}
+
+img.location_image {
+    max-width: 50%;
+    border: 3px solid black;
+    height: auto;
+}
+
+img.saved_loc_img {
+    max-width: 50%;
+    border: 3px solid black;
+    height: auto;
+}
+
+img.profile_pic {
+    left: 50%;
+    position: center;
+    border-radius: 50%;
+    border: 5px solid #555;
+    max-width: 35%;
+    height: auto;
+}
+
+img.review_pics {
+    border-radius: 50%;
+    border: 5px solid #555;
+    max-width: 5%;
+    height: auto;
+}
+
+img.user_profile {
+    left: 50%;
+    position: center;
+    border-radius: 50%;
+    border: 5px solid #555;
+    max-width: 35%;
+    height: auto;
+}
+
+img.post_pic {
+    border-radius: 50%;
+    border: 5px solid #555;
+    max-width: 5%;
+    height: auto;
+}
+
+div.comment_box {
+    background-color: rgb(200, 218, 242);
+}
+
+li.nav_bar_li {
+    float: right;
+}
+
+li.nav_bar_li a {
+    display: block;
+    color: rgb(164, 195, 236);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li.nav_bar_li a:hover {
+    background-color: #111;
+}
+
+li.nav_bar_li a:hover:not(.active) {
+    background-color: #111;
+}
+
+ul.nav_bar_ul {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #952020;
+}
+
+.active {
+    background-color: #04AA6D;
+}

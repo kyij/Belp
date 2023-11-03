@@ -4,8 +4,9 @@
 {% block body %}
 <h1>Locations</h1>
 {% for location in locations["businesses"] %}
+<div class="location_cards">
 <ol>
-    <img src= {{location.image_url}}>
+    <img src= {{location.image_url}} class="location_image">
     <br>
     Name : {{location.name}}
     <br>
@@ -32,6 +33,7 @@
     data-rating = "{{location.rating}}"
     data-review = "{{location.review_count}}"> Click here to save!</button> 
 </ol>
+</div>
 {% endfor %}
 
 {% endblock %}

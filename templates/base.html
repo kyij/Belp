@@ -8,68 +8,29 @@
   <title>
     {% block title %}{% endblock %}
   </title>
-
+  <link rel="stylesheet" href="/static/css/styles.css" />
   {% block head %}{% endblock %}
 </head>
-<style>
-  ul {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #5e3f38;
-  }
-
-  li.nav_bar_li {
-    float: right;
-  }
-
-  li.nav_bar_li a {
-    display: block;
-    color: rgb(206, 105, 105);
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-
-  li.nav_bar_li a:hover {
-    background-color: #111;
-  }
-
-  li.nav_bar_li a:hover:not(.active) {
-    background-color: #111;
-  }
-
-  .active {
-    background-color: #04AA6D;
-  }
-
-    {% block style %}
-
-    {% endblock %}
-</style>
 
 <body>
   <!-- put nav bar here  -->
-  <ul>
-    <li class ="nav_bar_li"><a href="/locations">Locations </a></li>
-    <li class ="nav_bar_li"><a href="/profile"> Profile</a></li>
+  <ul class="nav_bar_ul">
+    <li class="nav_bar_li"><a href="/locations">Locations </a></li>
+    <li class="nav_bar_li"><a href="/profile"> Profile</a></li>
     {% if session.get('user_email') == None %}
-      <li class ="nav_bar_li"><a href="/login"> Log In</a></li>
+    <li class="nav_bar_li"><a href="/login"> Log In</a></li>
     {% else %}
-    
-    <li class ="nav_bar_li"><a href="/logout">Log Out</a></li>
-    {% endif %} 
-    <li class ="nav_bar_li"><a href="/"> Home </a></li>
+
+    <li class="nav_bar_li"><a href="/logout">Log Out</a></li>
+    {% endif %}
+    <li class="nav_bar_li"><a href="/"> Home </a></li>
   </ul>
   {% for msg in get_flashed_messages() %}
   <p class="flash-msg">
     {{ msg }}
   </p>
   {% endfor %}
+
 
   {% block body %}{% endblock %}
 

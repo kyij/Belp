@@ -3,25 +3,29 @@
 {% block title %} {{user.display_name}}'s Profile! {% endblock %}
 
 {% block body %}
-<h2> {{user.display_name}}'s Profile Page!</h2>
-<div class="profile_pic">
-    <img src="{{user.profile_pic_url}}">
-</div>
 <div class="profile_info">
+<h2> {{user.display_name}}'s Profile Page!</h2>
+
+<img src="{{user.profile_pic_url}}" class="user_profile">
+
+
     <br>
     About Me:
     <br>
     <br>
-    {{user.about_me}}
+    <div class="users_about_me">
+        {{user.about_me}}
+    </div>
     <br>
     <br>
+
     Hobbies:
     <br>
     <br>
-    {{user.hobbies}}
-    <br>
+    <div class="users_hobbies">
+        {{user.hobbies}}
+        <br>
+    </div>
 </div>
-<div class="private_msg" id="private_msg" name="private_msg">
-    <a href="/private_msg"> Private Message</a>
-</div>
+
 {% endblock %}

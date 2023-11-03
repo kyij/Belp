@@ -2,17 +2,21 @@
 <html lang="en">
 
 {% block head %}
-  <title>New Friends!</title>
+<title>New Friends!</title>
 {% endblock %}
 
 
 
 {% block body %}
-<h1>Welcome!</h1>
+<div class="welcome_msg">
+  <h1>Welcome to Belp!</h1>
 
-<h2><a href="/account"> Create an Account! </a></h2>
-
-
+  <h3> <b>Your Next Destination Awaits!</b> </h3>
+  <p> Please create an account and proceed to the locations tab to find your next destination!</p>
+  <div class="create_account">
+    <a href="/account"> Create an Account! </a>
+  </div>
+</div>
 {% endblock %}
 
 </html>

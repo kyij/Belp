@@ -7,77 +7,76 @@
 
 {% endblock %}
 {% block body %}
-<h1>{{location.name}}'s Details Page</h1>
+
 <div class="location_details" id="location_details">
+    <h1>{{location.name}}'s Details Page</h1>
     <ol>
-        <img src={{location.img_url}}>
+        <img src={{location.img_url}} class="location_img_url">
         <br>
-        Name : {{location.name}}
-        {{location.location_id}}
+        <b>Name</b> : {{location.name}}
         <br>
-        Address: {{location.address}}
+        <b>Address</b>: {{location.address}}
         <br>
-        Url: {{location.url}}
+        <b>Url</b>: {{location.url}}
         <br>
-        Phone Number: {{location.phone_num}}
+        <b>Phone Number</b>: {{location.phone_num}}
         <br>
-        Rating: {{location.rating}}
+        <b>Rating</b>: {{location.rating}}
         <br>
-        Review Count: {{location.review_count}}
+        <b>Review Count</b>: {{location.review_count}}
         <br>
         <div class="hours" id="hours">
             <h4>Hours</h4>
-        {% if hours['Sunday']['is_closed_today'] == True %}
+            {% if hours['Sunday']['is_closed_today'] == True %}
             <p>Sunday: Closed </p>
-        {% else %}
+            {% else %}
             <p>Sunday : {{ hours['Sunday']['when_open'] }}</p>
-        {% endif %}
-        {% if hours['Monday']['is_closed_today'] == True %}
+            {% endif %}
+            {% if hours['Monday']['is_closed_today'] == True %}
             <p>Monday: Closed </p>
-        {% else %}
+            {% else %}
             <p>Monday : {{ hours['Monday']['when_open'] }}</p>
-        {% endif %}
-        {% if hours['Tuesday']['is_closed_today'] == True %}
+            {% endif %}
+            {% if hours['Tuesday']['is_closed_today'] == True %}
             <p>Tuesday: Closed </p>
-        {% else %}
+            {% else %}
             <p>Tuesday : {{ hours['Tuesday']['when_open'] }}</p>
-        {% endif %}
-        {% if hours['Wednesday']['is_closed_today'] == True %}
+            {% endif %}
+            {% if hours['Wednesday']['is_closed_today'] == True %}
             <p>Wednesday: Closed </p>
-        {% else %}
+            {% else %}
             <p>Wednesday : {{ hours['Wednesday']['when_open'] }}</p>
-        {% endif %}
-        {% if hours['Thursday']['is_closed_today'] == True %}
+            {% endif %}
+            {% if hours['Thursday']['is_closed_today'] == True %}
             <p>Thursday: Closed </p>
-        {% else %}
+            {% else %}
             <p>Thursday : {{ hours['Thursday']['when_open'] }}</p>
-        {% endif %}
-        {% if hours['Friday']['is_closed_today'] == True %}
+            {% endif %}
+            {% if hours['Friday']['is_closed_today'] == True %}
             <p>Friday: Closed </p>
-        {% else %}
+            {% else %}
             <p>Friday : {{ hours['Friday']['when_open'] }}</p>
-        {% endif %}
-        {% if hours['Saturday']['is_closed_today'] == True %}
+            {% endif %}
+            {% if hours['Saturday']['is_closed_today'] == True %}
             <p>Saturday: Closed </p>
-        {% else %}
+            {% else %}
             <p>Saturday : {{ hours['Saturday']['when_open'] }}</p>
-        {% endif %}
-        <br>
-       
-      
-       
+            {% endif %}
         </div>
+        <br>
+
 
     </ol>
 </div>
 <div class="reviews" id="reviews" name="reviews">
-    <h1> <b>Reviews</b></h1>
+    <h1> <b>Reviews:</b></h1>
     <ol>
         {% for review in reviews["reviews"] %}
         <li>
-            Name: {{review.user["name"]}}
             <br>
-            <img src = "{{review.user['image_url']}}">
+            <img src="{{review.user['image_url']}}" class="review_pics">
+            {{review.user["name"]}}
+            <br>
             Rating: {{review.rating}}
             <br>
             Posted: {{review.time_created}}
@@ -91,22 +90,32 @@
     </ol>
 </div>
 
-<div id="all_posts">
-    {% for post in posts %}
-    <img src={{post.user.profile_pic_url}}> <a href="/users/{{post.user.user_id}}">{{post.user.display_name}}</a>
-    posted:
-    <br>
-    {{post.post_body}}
-    <br>
-    {% endfor %}
-</div>
-<form action="/save_post" , method="POST">
-    <input type="hidden" name="location_id" value="{{location.location_id}}">
-    <label for="post_body"> Comment Below:</label>
-    <br>
-    <textarea id="posts_body" name="post_body" style="height:300px; width:300px"></textarea>
-    <br>
-    <input type="submit">
 
-</form>
+
+<h1> <b>Comments:</b></h1>
+{% for post in posts %}
+<div class="all_posts" id="all_posts">
+<img src={{post.user.profile_pic_url}} class="post_pic"> <a
+    href="/users/{{post.user.user_id}}">{{post.user.display_name}}</a>
+posted:
+<br>
+<br>
+{{post.post_body}}
+<br>
+<br>
+</div>
+{% endfor %}
+<br>
+
+<div class="comment_box">
+    <form action="/save_post" , method="POST">
+        <input type="hidden" name="location_id" value="{{location.location_id}}">
+        <label for="post_body"> Comment Below:</label>
+        <br>
+        <textarea id="posts_body" name="post_body" style="height:300px; width:300px"></textarea>
+        <br>
+        <input type="submit">
+
+    </form>
+</div>
 {% endblock %}

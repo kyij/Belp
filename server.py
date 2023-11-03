@@ -225,44 +225,53 @@ def location_details(location_id):
     response = response.json()
     response1 = response1.json()
 
-    for hours in response1['hours'][0]['open']:
-        for item in hours:
-            if item =='start' or item =='end':
-                military_hour = hours[item]
-                hour = datetime.datetime.strptime(military_hour, '%H%M').strftime('%I:%M %p')
-                hours[item] = hour
+    if "hours" in response1:
+        for hours in response1['hours'][0]['open']:
+            for item in hours:
+                if item =='start' or item =='end':
+                    military_hour = hours[item]
+                    hour = datetime.datetime.strptime(military_hour, '%H%M').strftime('%I:%M %p')
+                    hours[item] = hour
 
-    hours_dict = {'Monday' : {'when_open': "", 'is_closed_today': True},
-                  'Tuesday' : {'when_open': "", 'is_closed_today': True},
-                  'Wednesday' : {'when_open': "", 'is_closed_today': True},
-                  'Thursday' : {'when_open': "", 'is_closed_today': True},
-                  'Friday' : {'when_open': "", 'is_closed_today': True},
-                  'Saturday' : {'when_open': "", 'is_closed_today': True},
-                  'Sunday' : {'when_open': "", 'is_closed_today': True}
-    }
-    def set_hours(day):
-        if hours_dict[day]['when_open'] == "":
-            hours_dict[day]['when_open'] += f"{hours_info['start']} - {hours_info['end']}"
-        else:
-            hours_dict[day]['when_open'] += f", {hours_info['start']} - {hours_info['end']}"
-        hours_dict[day]['is_closed_today'] = False
-    
-    for hours_info in response1['hours'][0]['open']:
-        if hours_info['day'] == 0:
-            set_hours('Monday')
-        elif hours_info['day'] == 1:
-            set_hours('Tuesday')
-        elif hours_info['day'] == 2:
-            set_hours('Wednesday')
-        elif hours_info['day'] == 3:
-            set_hours('Thursday')
-        elif hours_info['day'] == 4:
-            set_hours('Friday')
-        elif hours_info['day'] == 5:
-            set_hours('Saturday')
-        elif hours_info['day'] == 6:
-            set_hours('Sunday')
-
+        hours_dict = {'Monday' : {'when_open': "", 'is_closed_today': True},
+                    'Tuesday' : {'when_open': "", 'is_closed_today': True},
+                    'Wednesday' : {'when_open': "", 'is_closed_today': True},
+                    'Thursday' : {'when_open': "", 'is_closed_today': True},
+                    'Friday' : {'when_open': "", 'is_closed_today': True},
+                    'Saturday' : {'when_open': "", 'is_closed_today': True},
+                    'Sunday' : {'when_open': "", 'is_closed_today': True}
+        }
+        def set_hours(day):
+            if hours_dict[day]['when_open'] == "":
+                hours_dict[day]['when_open'] += f"{hours_info['start']} - {hours_info['end']}"
+            else:
+                hours_dict[day]['when_open'] += f", {hours_info['start']} - {hours_info['end']}"
+            hours_dict[day]['is_closed_today'] = False
+        
+        for hours_info in response1['hours'][0]['open']:
+            if hours_info['day'] == 0:
+                set_hours('Monday')
+            elif hours_info['day'] == 1:
+                set_hours('Tuesday')
+            elif hours_info['day'] == 2:
+                set_hours('Wednesday')
+            elif hours_info['day'] == 3:
+                set_hours('Thursday')
+            elif hours_info['day'] == 4:
+                set_hours('Friday')
+            elif hours_info['day'] == 5:
+                set_hours('Saturday')
+            elif hours_info['day'] == 6:
+                set_hours('Sunday')
+    else:
+        hours_dict = {'Monday' : {'when_open': "Open", 'is_closed_today': False},
+                    'Tuesday' : {'when_open': "Open", 'is_closed_today': False},
+                    'Wednesday' : {'when_open': "Open", 'is_closed_today': False},
+                    'Thursday' : {'when_open': "Open", 'is_closed_today': False},
+                    'Friday' : {'when_open': "Open", 'is_closed_today': False},
+                    'Saturday' : {'when_open': "Open", 'is_closed_today': False},
+                    'Sunday' : {'when_open': "Open", 'is_closed_today': False}
+                    }
     
     return render_template("locations_details.html",location=location, posts=posts, reviews=response, hours=hours_dict )
 
@@ -343,7 +352,7 @@ def delete_saved_location(location_id):
     saved_location = crud.get_saved_locations(user_id=user.user_id, location_id=location.location_id)
     db.session.delete(saved_location)
     db.session.commit()
-
+    flash("You have deleted this location.")
     return redirect('/profile')
 
 if __name__ == "__main__":

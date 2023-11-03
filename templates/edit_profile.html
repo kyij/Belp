@@ -3,6 +3,7 @@
 {% block title %} Edit your profile! {% endblock %}
 
 {% block body %}
+<div class="edit_prof">
 <h2>Edit {{user.display_name}}'s Profile Page!</h2>
 <form action="/edit_profile" method="POST" enctype="multipart/form-data">
    
@@ -37,4 +38,5 @@
     <input type="reset" value="Reset">
   </p>
 </form>
+</div>
 {% endblock %}
