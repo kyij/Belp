@@ -2,14 +2,23 @@
 
 body {
     background-image: url("/static/images/ggbridge1.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: cover;
 }
 
 div.location_details {
     background-color: rgb(200, 218, 242);
+    font-size: large;
 }
 
 div.profile_page {
     background-color: rgb(200, 218, 242);
+    width:85em;
+    margin-left: auto;
+    margin-right: auto;
+    height:auto;
+    font-size: large;
 }
 
 div.edit_button a{
@@ -25,16 +34,22 @@ div.edit_button a{
     border-bottom: 1px solid #333333;
     border-left: 1px solid #CCCCCC;
     position:absolute;
-    right: 80px;
+    right: 550px;
 }
 
 div.edit_prof {
     background-color: rgb(200, 218, 242);
+    margin-left: auto;
+    margin-right: auto;
+    width:100em;
+    height:auto;
+    font-size: large;
 }
 
 div.about_me {
     background-color: aquamarine;
     border-radius: 3px;
+    font-size: large;
     border: 3px solid black;
     width: 30em;
     height: 10em;
@@ -45,6 +60,7 @@ div.about_me {
 div.hobbies {
     background-color: aquamarine;
     border-radius: 3px;
+    font-size: large;
     border: 3px solid black;
     width: 30em;
     height: 10em;
@@ -59,6 +75,7 @@ div.profile_info {
 div.users_about_me {
     background-color: aquamarine;
     border-radius: 3px;
+    font-size: large;
     border: 3px solid black;
     width: 30em;
     height: 10em;
@@ -69,6 +86,7 @@ div.users_about_me {
 div.users_hobbies {
     background-color: aquamarine;
     border-radius: 3px;
+    font-size: large;
     border: 3px solid black;
     width: 30em;
     height: 10em;
@@ -78,21 +96,30 @@ div.users_hobbies {
 
 div.saved_locations {
     background-color: rgb(109, 220, 183);
+    font-size: large;
     border-radius: 3px;
     border: 3px solid black;
-    width: auto;
+    width: 70em;
     height: auto;
     margin: 1em;
     padding: 1em;
 }
 
 div.locations {
-    background-color: rgb(200, 218, 242);;
+    background-color: rgb(200, 218, 242);
+    margin-left: auto;
+    margin-right: auto;
+    width:100em;
+    height:auto;
+    font-size: large;
 }
 
 div.location_cards {
     background-color: rgb(200, 218, 242);;
     border-radius: 3px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: large;
     border: 3px solid black;
     width: auto;
     height: auto;
@@ -103,7 +130,12 @@ div.location_cards {
 div.welcome_msg {
     background-color: beige;
     background-size: 50em;
-    position: fixed;
+    margin: auto;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: large;
+    transform: translate(-50%,-50%);
     top: 50%;
     left: 50%;
 }
@@ -112,6 +144,7 @@ div.create_account a{
     position:absolute;
     font: bold 11px Arial;
     max-width: 25%;
+    font-size: large;
     height:auto;
     text-decoration: none;
     background-color: #EEEEEE;
@@ -131,10 +164,12 @@ div.log_in {
 }
 div.reviews {
     background-color: rgb(200, 218, 242);
+    font-size: large;
 }
 
 div.all_posts {
     background-color: rgb(200, 218, 242);
+    font-size: large;
     border-radius: 3px;
     border: 3px solid black;
     width: auto;
@@ -156,14 +191,15 @@ div.reviews_comments a {
     border-bottom: 1px solid #333333;
     border-left: 1px solid #CCCCCC;
     position:absolute;
-    left: 80px;
+    left: 590px;
 }
 
 div.delete_location a{
     position:absolute;
-    right: 30px;
+    right: 700px;
+    font-size: large;
     font: bold 11px Arial;
-    max-width: 20s%;
+    max-width: 20%;
     height:auto;
     text-decoration: none;
     background-color: #EEEEEE;
@@ -178,6 +214,7 @@ div.delete_location a{
 div.hours {
     background-color: rgb(200, 218, 242);
     border: 2px solid rgb(109, 220, 183);
+    font-size: large;
     max-width: 40%;
     height: auto;
     margin: 1em;
@@ -187,22 +224,24 @@ div.hours {
 p.flash-msg{
     color:rgb(200, 218, 242) ;
     background-color: #952020 ;
+    font-size: large;
     border: 3px solid black;
 }
 
 img.location_img_url{
     border: 2px solid black;
+    width:auto;
     height: auto;
 }
 
 img.location_image {
-    max-width: 50%;
+    max-width: 30%;
     border: 3px solid black;
     height: auto;
 }
 
 img.saved_loc_img {
-    max-width: 50%;
+    max-width: 30%;
     border: 3px solid black;
     height: auto;
 }
@@ -212,7 +251,7 @@ img.profile_pic {
     position: center;
     border-radius: 50%;
     border: 5px solid #555;
-    max-width: 35%;
+    max-width: 10%;
     height: auto;
 }
 
@@ -228,7 +267,7 @@ img.user_profile {
     position: center;
     border-radius: 50%;
     border: 5px solid #555;
-    max-width: 35%;
+    max-width: 10%;
     height: auto;
 }
 
