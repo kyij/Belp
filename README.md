@@ -52,8 +52,29 @@ Bestinations has not been deployed, so here is how to run app locally on your ma
         * `export CLOUDINARY_SECRET="Insert_SECRET_here"`
         * `export YELP_APIKEY="Insert_YELPAPI_here"`
     * Once done source secret.sh, seed the capstone.sql database, and start up the flask server:
+        * `source.secrets.sh`
         * `psql capstone < capstone.sql`
         * `python server.py`
     * Go to localhost:5000 to see the web app.
             
-        
+## <a name="use"></a> How to use Bestinations
+
+Start by navigating to the "Create Account" button and filling out the form.
+![Create Account](static/images/Create_account_page.png)
+
+Proceed to the "Profile" tab
+![Profile](static/images/Profile_page.png)
+
+The previous information you submitted is now displayed on the profile tab.
+
+Proceed to the "Locations" tab and submit your query.
+![Locations](static/images/locations_page.png)
+
+Your locations are now displayed, you may now save the location to view it on your profile.
+![Display](static/images/display_location.png)
+
+Return to your profile and scroll down to see the saved locations. You are given the option to proceed to the reviews/comments or delete that location from your profile.
+![Reviews_Delete](static/images/reviews_delete.png)
+
+Proceed to reviews/comments to see existing reviews and comments. You may submit your own comment to see it on the page.
+![Comments](static/images/Comment_page.png)
