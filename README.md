@@ -1,6 +1,6 @@
 # Bestination
 
-Learn more about the developer: www.linkedin.com/in/jkyi
+Learn more about the developer: <a href="www.linkedin.com/in/jkyi"> Here </a>
 
 Check out the demo here:  <a href="https://youtu.be/Z9hRPGeKdDQ?si=S6DjSL3302-8ov6S">Demo Reel</a>
 
