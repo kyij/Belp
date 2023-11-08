@@ -48,7 +48,7 @@ Bestinations has not been deployed, so here is how to run app locally on your ma
     * `python -i model.py`
     * While in interactive mode, create tables: `db.create_all()`
 * Quit interactive mode. Now, we need to source our secrets.sh file for the YELP and Cloudinary API key.
-    * As the secrets.sh file is not provided, the user will have to create get their own API key from YELP and Cloudinary before proceeding.
+    * As the secrets.sh file is not provided, the user will have to create their own API key from YELP and Cloudinary before proceeding.
     * Secrets.sh will have 3 exports:
         * `export CLOUDINARY_KEY="Insert_API_here"`
         * `export CLOUDINARY_SECRET="Insert_SECRET_here"`
