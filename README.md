@@ -2,7 +2,7 @@
 
 Learn more about the developer: www.linkedin.com/in/jkyi
 
-Check out the demo here:  <a href="https://youtu.be/Z9hRPGeKdDQ?si=S6DjSL3302-8ov6S">Demo Reel.</a>
+Check out the demo here:  <a href="https://youtu.be/Z9hRPGeKdDQ?si=S6DjSL3302-8ov6S">Demo Reel</a>
 
 
 With its YELP inspired functionality, Bestination delivers an
