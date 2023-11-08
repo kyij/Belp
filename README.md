@@ -54,7 +54,7 @@ Bestinations has not been deployed, so here is how to run app locally on your ma
         * `export CLOUDINARY_SECRET="Insert_SECRET_here"`
         * `export YELP_APIKEY="Insert_YELPAPI_here"`
     * Once done source secret.sh, seed the capstone.sql database, and start up the flask server:
-        * `source.secrets.sh`
+        * `source secrets.sh`
         * `psql capstone < capstone.sql`
         * `python server.py`
     * Go to localhost:5000 to see the web app.
