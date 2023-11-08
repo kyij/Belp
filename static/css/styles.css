@@ -69,7 +69,12 @@ div.hobbies {
 }
 
 div.profile_info {
-    background-color: rgb(200, 218, 242);;
+    background-color: rgb(200, 218, 242);
+    width:85em;
+    margin-left: auto;
+    margin-right: auto;
+    height:auto;
+    font-size: large;
 }
 
 div.users_about_me {
@@ -157,10 +162,17 @@ div.create_account a{
 }
 div.create_account_page {
     background-color: rgb(200, 218, 242);
+    width:85em;
+    margin-left: auto;
+    margin-right: auto;
+    height:auto;
 }
 div.log_in {
     background-color: rgb(200, 218, 242);
-    max-width: 50%;
+    width:85em;
+    margin-left: auto;
+    margin-right: auto;
+    height:auto;
 }
 div.reviews {
     background-color: rgb(200, 218, 242);

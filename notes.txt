@@ -31,3 +31,9 @@ Detail's Page Notes
         -
     server route to that html and pass other user id
     -
+
+
+rgb(164, 195, 236); dark teal
+(200, 218, 242) light teal
+
+background-color: #952020 dark redish
