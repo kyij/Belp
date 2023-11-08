@@ -45,7 +45,7 @@ Bestinations has not been deployed, so here is how to run app locally on your ma
     * `psql`
     * `CREATE DATABASE capstone;`
 * Create the tables in your database:
-    * `python -i model.py`
+    * `python3 -i model.py`
     * While in interactive mode, create tables: `db.create_all()`
 * Quit interactive mode. Now, we need to source our secrets.sh file for the YELP and Cloudinary API key.
     * As the secrets.sh file is not provided, the user will have to create their own API key from YELP and Cloudinary before proceeding.
@@ -56,7 +56,7 @@ Bestinations has not been deployed, so here is how to run app locally on your ma
     * Once done source secret.sh, seed the capstone.sql database, and start up the flask server:
         * `source secrets.sh`
         * `psql capstone < capstone.sql`
-        * `python server.py`
+        * `python3 server.py`
     * Go to localhost:5000 to see the web app.
             
 ## <a name="use"></a> How to use Bestinations
